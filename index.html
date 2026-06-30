@@ -209,7 +209,8 @@
                 <div class="bg-white p-4 rounded-xl shadow mb-6">
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-bold text-gray-700">Tren Transaksi & Keuangan</h3>
-                        <select id="chart-filter" onchange="renderDashboardChart()" class="border rounded p-1 text-sm focus:border-navy outline-none">
+                        <select id="chart-filter" onchange="renderDashboardChart()"
+                            class="border rounded p-1 text-sm focus:border-navy outline-none">
                             <option value="minggu">7 Hari Terakhir</option>
                             <option value="bulan">30 Hari Terakhir</option>
                             <option value="hari">Hari Ini</option>
@@ -222,8 +223,10 @@
 
                 <!-- Form Transaksi Keuangan (Pemasukan/Pengeluaran) -->
                 <div class="bg-white p-4 rounded-xl shadow mb-6 border-t-4 border-indigo-500">
-                    <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-wallet text-indigo-500 mr-2"></i>Catat Transaksi Keuangan Cepat</h3>
-                    <form id="form-keuangan" onsubmit="handleSaveKeuangan(event)" class="flex flex-col md:flex-row gap-4 items-end">
+                    <h3 class="font-bold text-gray-700 mb-4"><i class="fas fa-wallet text-indigo-500 mr-2"></i>Catat
+                        Transaksi Keuangan Cepat</h3>
+                    <form id="form-keuangan" onsubmit="handleSaveKeuangan(event)"
+                        class="flex flex-col md:flex-row gap-4 items-end">
                         <div class="flex-1 w-full">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Jenis</label>
                             <select id="keu-type" class="w-full border rounded p-2 focus:border-navy" required>
@@ -233,14 +236,17 @@
                         </div>
                         <div class="flex-1 w-full">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Keterangan</label>
-                            <input type="text" id="keu-note" class="w-full border rounded p-2 focus:border-navy" placeholder="Misal: Beli Sabun, Bayar Listrik..." required>
+                            <input type="text" id="keu-note" class="w-full border rounded p-2 focus:border-navy"
+                                placeholder="Misal: Beli Sabun, Bayar Listrik..." required>
                         </div>
                         <div class="flex-1 w-full">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Nominal (Rp)</label>
-                            <input type="number" id="keu-amount" min="0" class="w-full border rounded p-2 focus:border-navy" placeholder="0" required>
+                            <input type="number" id="keu-amount" min="0"
+                                class="w-full border rounded p-2 focus:border-navy" placeholder="0" required>
                         </div>
                         <div class="w-full md:w-auto">
-                            <button type="submit" class="w-full bg-indigo-600 text-white font-bold py-2 px-6 rounded hover:bg-indigo-700 transition">
+                            <button type="submit"
+                                class="w-full bg-indigo-600 text-white font-bold py-2 px-6 rounded hover:bg-indigo-700 transition">
                                 <i class="fas fa-save mr-1"></i> Simpan
                             </button>
                         </div>
@@ -264,7 +270,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <!-- Additional Lists: Transaksi & Kepegawaian -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                     <div class="bg-white p-4 rounded-xl shadow">
@@ -350,11 +356,18 @@
 
                             <!-- Spotting Checkbox -->
                             <div class="mb-4">
-                                <label class="flex items-center space-x-2 bg-blue-50 border border-blue-200 p-3 rounded hover:bg-blue-100 transition">
-                                    <input type="checkbox" id="trx-spotting" class="form-checkbox h-5 w-5 text-navy rounded cursor-pointer" onchange="calculateTotal()">
-                                    <span class="text-sm font-bold text-navy cursor-pointer">Tambah Spotting (Noda Membandel)</span>
+                                <label
+                                    class="flex items-center space-x-2 bg-blue-50 border border-blue-200 p-3 rounded hover:bg-blue-100 transition">
+                                    <input type="checkbox" id="trx-spotting"
+                                        class="form-checkbox h-5 w-5 text-navy rounded cursor-pointer"
+                                        onchange="calculateTotal()">
+                                    <span class="text-sm font-bold text-navy cursor-pointer">Tambah Spotting (Noda
+                                        Membandel)</span>
                                     <span class="text-sm font-bold text-green-600 ml-auto flex items-center">
-                                        + Rp <input type="text" id="trx-spotting-price" value="10.000" class="w-24 ml-1 p-1 border-b border-green-600 text-right bg-transparent text-green-700 font-bold focus:bg-white focus:outline-none rounded transition" oninput="formatSpottingPrice(this); calculateTotal()" disabled title="Hanya Admin yang dapat mengubah harga ini">
+                                        + Rp <input type="text" id="trx-spotting-price" value="10.000"
+                                            class="w-24 ml-1 p-1 border-b border-green-600 text-right bg-transparent text-green-700 font-bold focus:bg-white focus:outline-none rounded transition"
+                                            oninput="formatSpottingPrice(this); calculateTotal()" disabled
+                                            title="Hanya Admin yang dapat mengubah harga ini">
                                     </span>
                                 </label>
                             </div>
@@ -416,9 +429,12 @@
 
                 <!-- Tabs -->
                 <div class="flex space-x-2 mb-4 border-b border-gray-200">
-                    <button onclick="switchLaporanTab('transaksi')" id="tab-laporan-transaksi" class="px-4 py-2 font-bold text-navy border-b-2 border-navy transition">Transaksi</button>
-                    <button onclick="switchLaporanTab('keuangan')" id="tab-laporan-keuangan" class="px-4 py-2 font-bold text-gray-500 hover:text-navy border-b-2 border-transparent hover:border-gray-300 transition">Keuangan</button>
-                    <button onclick="switchLaporanTab('inventory')" id="tab-laporan-inventory" class="px-4 py-2 font-bold text-gray-500 hover:text-navy border-b-2 border-transparent hover:border-gray-300 transition">Inventory</button>
+                    <button onclick="switchLaporanTab('transaksi')" id="tab-laporan-transaksi"
+                        class="px-4 py-2 font-bold text-navy border-b-2 border-navy transition">Transaksi</button>
+                    <button onclick="switchLaporanTab('keuangan')" id="tab-laporan-keuangan"
+                        class="px-4 py-2 font-bold text-gray-500 hover:text-navy border-b-2 border-transparent hover:border-gray-300 transition">Keuangan</button>
+                    <button onclick="switchLaporanTab('inventory')" id="tab-laporan-inventory"
+                        class="px-4 py-2 font-bold text-gray-500 hover:text-navy border-b-2 border-transparent hover:border-gray-300 transition">Inventory</button>
                 </div>
 
                 <div class="bg-white rounded-xl shadow overflow-hidden">
@@ -431,7 +447,8 @@
                                 class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 hidden flex-1 md:flex-none">
                                 <i class="fas fa-plus mr-1"></i> Tambah Barang
                             </button>
-                            <button onclick="Swal.fire('Fitur Segera Hadir', 'Export PDF/Excel dalam pengembangan', 'info')"
+                            <button
+                                onclick="Swal.fire('Fitur Segera Hadir', 'Export PDF/Excel dalam pengembangan', 'info')"
                                 class="bg-green-600 text-white px-3 py-2 rounded text-sm hover:bg-green-700 flex-1 md:flex-none">
                                 <i class="fas fa-file-excel mr-1"></i> Export Data
                             </button>
@@ -442,14 +459,16 @@
                     <div id="content-laporan-transaksi" class="overflow-x-auto tab-laporan-content">
                         <div class="p-3 bg-white border-b flex gap-2 items-center text-sm">
                             <span class="font-bold text-gray-700">Filter Rentang Waktu:</span>
-                            <select id="filter-trx-time" onchange="toggleTrxDateFilter()" class="border rounded p-1.5 focus:border-navy outline-none cursor-pointer">
+                            <select id="filter-trx-time" onchange="toggleTrxDateFilter()"
+                                class="border rounded p-1.5 focus:border-navy outline-none cursor-pointer">
                                 <option value="semua">Semua Waktu</option>
                                 <option value="hari">Hari Ini</option>
                                 <option value="minggu">7 Hari Terakhir</option>
                                 <option value="bulan">Bulan Ini</option>
                                 <option value="tanggal">Pilih Tanggal</option>
                             </select>
-                            <input type="date" id="filter-trx-date" onchange="renderTableTransaksi()" class="border rounded p-1.5 focus:border-navy outline-none hidden">
+                            <input type="date" id="filter-trx-date" onchange="renderTableTransaksi()"
+                                class="border rounded p-1.5 focus:border-navy outline-none hidden">
                         </div>
                         <table class="w-full text-sm text-left text-gray-500">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-100">
@@ -594,27 +613,34 @@
     <!-- MODAL: KELOLA INVENTORY -->
     <div id="modal-inventory" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
         <div class="bg-white w-full max-w-md p-6 rounded-xl shadow-lg relative">
-            <button onclick="closeInventoryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
+            <button onclick="closeInventoryModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i
+                    class="fas fa-times text-xl"></i></button>
             <h3 class="text-lg font-bold mb-4 text-navy" id="inv-form-title">Tambah Barang/Stok</h3>
             <form onsubmit="handleSaveInventory(event)">
                 <input type="hidden" id="inv-id">
                 <div class="mb-3">
                     <label class="block text-sm font-bold text-gray-700 mb-1">Nama Barang</label>
-                    <input type="text" id="inv-name" class="w-full border rounded p-2 focus:border-navy outline-none" required placeholder="Contoh: Deterjen Cair">
+                    <input type="text" id="inv-name" class="w-full border rounded p-2 focus:border-navy outline-none"
+                        required placeholder="Contoh: Deterjen Cair">
                 </div>
                 <div class="grid grid-cols-2 gap-4 mb-3">
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-1">Stok Tersedia</label>
-                        <input type="number" id="inv-stock" step="0.1" min="0" class="w-full border rounded p-2 focus:border-navy outline-none" required>
+                        <input type="number" id="inv-stock" step="0.1" min="0"
+                            class="w-full border rounded p-2 focus:border-navy outline-none" required>
                     </div>
                     <div>
                         <label class="block text-sm font-bold text-gray-700 mb-1">Harga Beli (Rp)</label>
-                        <input type="number" id="inv-price" min="0" class="w-full border rounded p-2 focus:border-navy outline-none" required>
+                        <input type="number" id="inv-price" min="0"
+                            class="w-full border rounded p-2 focus:border-navy outline-none" required>
                     </div>
                 </div>
                 <div class="flex gap-2 mt-4">
-                    <button type="submit" class="w-full bg-navy text-white font-bold py-2 rounded hover:bg-blue-800">Simpan</button>
-                    <button type="button" onclick="closeInventoryModal()" class="w-full bg-gray-300 text-gray-700 font-bold py-2 rounded hover:bg-gray-400 hidden" id="inv-btn-cancel">Batal</button>
+                    <button type="submit"
+                        class="w-full bg-navy text-white font-bold py-2 rounded hover:bg-blue-800">Simpan</button>
+                    <button type="button" onclick="closeInventoryModal()"
+                        class="w-full bg-gray-300 text-gray-700 font-bold py-2 rounded hover:bg-gray-400 hidden"
+                        id="inv-btn-cancel">Batal</button>
                 </div>
             </form>
         </div>
@@ -623,9 +649,10 @@
     <!-- MODAL: KELOLA LAYANAN -->
     <div id="modal-services" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
         <div class="bg-white w-full max-w-3xl p-6 rounded-xl shadow-lg relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
+            <button onclick="closeServiceModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i
+                    class="fas fa-times text-xl"></i></button>
             <h3 class="text-lg font-bold mb-4 text-navy">Kelola Harga & Layanan</h3>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- FORM TAMBAH/EDIT -->
                 <div class="md:col-span-1 bg-gray-50 p-4 rounded-lg">
@@ -634,23 +661,30 @@
                         <input type="hidden" id="svc-id">
                         <div class="mb-3">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Nama Layanan</label>
-                            <input type="text" id="svc-name" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required placeholder="Contoh: Cuci Komplit">
+                            <input type="text" id="svc-name"
+                                class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required
+                                placeholder="Contoh: Cuci Komplit">
                         </div>
                         <div class="mb-3">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Harga (Rp)</label>
-                            <input type="number" id="svc-price" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                            <input type="number" id="svc-price"
+                                class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                         </div>
                         <div class="mb-4">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Satuan</label>
-                            <select id="svc-unit" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                            <select id="svc-unit"
+                                class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                                 <option value="Kg">Kg</option>
                                 <option value="Pcs">Pcs</option>
                                 <option value="Meter">Meter</option>
                             </select>
                         </div>
                         <div class="flex gap-2">
-                            <button type="submit" class="w-full bg-navy text-white text-sm font-bold py-2 rounded hover:bg-blue-800 transition">Simpan</button>
-                            <button type="button" onclick="resetServiceForm()" class="w-full bg-gray-300 text-gray-700 text-sm font-bold py-2 rounded hover:bg-gray-400 transition hidden" id="svc-btn-cancel">Batal</button>
+                            <button type="submit"
+                                class="w-full bg-navy text-white text-sm font-bold py-2 rounded hover:bg-blue-800 transition">Simpan</button>
+                            <button type="button" onclick="resetServiceForm()"
+                                class="w-full bg-gray-300 text-gray-700 text-sm font-bold py-2 rounded hover:bg-gray-400 transition hidden"
+                                id="svc-btn-cancel">Batal</button>
                         </div>
                     </form>
                 </div>
@@ -677,9 +711,10 @@
     <!-- MODAL: KELOLA PEGAWAI -->
     <div id="modal-users" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-center items-center">
         <div class="bg-white w-full max-w-4xl p-6 rounded-xl shadow-lg relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeUserModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i class="fas fa-times text-xl"></i></button>
+            <button onclick="closeUserModal()" class="absolute top-4 right-4 text-gray-400 hover:text-red-500"><i
+                    class="fas fa-times text-xl"></i></button>
             <h3 class="text-lg font-bold mb-4 text-navy">Kelola Akun Pegawai</h3>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- FORM TAMBAH/EDIT -->
                 <div class="md:col-span-1 bg-gray-50 p-4 rounded-lg h-fit">
@@ -688,22 +723,27 @@
                         <input type="hidden" id="usr-id">
                         <div class="mb-3">
                             <label class="block text-sm font-bold text-gray-700 mb-1">Nama Lengkap</label>
-                            <input type="text" id="usr-name" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required placeholder="Nama Pegawai">
+                            <input type="text" id="usr-name"
+                                class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required
+                                placeholder="Nama Pegawai">
                         </div>
                         <div class="grid grid-cols-2 gap-2 mb-3">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Username</label>
-                                <input type="text" id="usr-username" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                                <input type="text" id="usr-username"
+                                    class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Password</label>
-                                <input type="text" id="usr-password" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                                <input type="text" id="usr-password"
+                                    class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 gap-2 mb-4">
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Jabatan (Role)</label>
-                                <select id="usr-role" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                                <select id="usr-role"
+                                    class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                                     <option value="Admin">Admin</option>
                                     <option value="Kasir">Kasir</option>
                                     <option value="Kurir">Kurir</option>
@@ -712,16 +752,20 @@
                             </div>
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
-                                <select id="usr-status" class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
+                                <select id="usr-status"
+                                    class="w-full border rounded p-2 text-sm focus:border-navy outline-none" required>
                                     <option value="Active">Aktif</option>
                                     <option value="Inactive">Non-Aktif</option>
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="flex gap-2">
-                            <button type="submit" class="w-full bg-navy text-white text-sm font-bold py-2 rounded hover:bg-blue-800 transition">Simpan</button>
-                            <button type="button" onclick="resetUserForm()" class="w-full bg-gray-300 text-gray-700 text-sm font-bold py-2 rounded hover:bg-gray-400 transition hidden" id="usr-btn-cancel">Batal</button>
+                            <button type="submit"
+                                class="w-full bg-navy text-white text-sm font-bold py-2 rounded hover:bg-blue-800 transition">Simpan</button>
+                            <button type="button" onclick="resetUserForm()"
+                                class="w-full bg-gray-300 text-gray-700 text-sm font-bold py-2 rounded hover:bg-gray-400 transition hidden"
+                                id="usr-btn-cancel">Batal</button>
                         </div>
                     </form>
                 </div>
@@ -760,7 +804,7 @@
         let shouldPrintAfterSave = false;
 
         // Konfigurasi URL Google Apps Script Web App
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvNqoKSEsCBsKe4064i2TnlM6q-9Mhecrxs4mi7Gwe1dggAX5ConJEgKISyIGAhNPr/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvNqoKSEsCBsKe4064i2TnlM6q-9Mhecrxs4mi7Gwe1dggAX5ConJEgKISyIGAhNPr/exechttps://script.google.com/macros/s/AKfycbwvNqoKSEsCBsKe4064i2TnlM6q-9Mhecrxs4mi7Gwe1dggAX5ConJEgKISyIGAhNPr/exec';
 
         // Polyfill untuk google.script.run menggunakan Fetch API
         if (typeof google === 'undefined') {
@@ -769,32 +813,32 @@
                     get run() {
                         const state = { successHandler: null, failureHandler: null };
                         const proxy = new Proxy({}, {
-                            get: function(target, prop) {
+                            get: function (target, prop) {
                                 if (prop === 'withSuccessHandler') {
-                                    return function(handler) { state.successHandler = handler; return proxy; };
+                                    return function (handler) { state.successHandler = handler; return proxy; };
                                 }
                                 if (prop === 'withFailureHandler') {
-                                    return function(handler) { state.failureHandler = handler; return proxy; };
+                                    return function (handler) { state.failureHandler = handler; return proxy; };
                                 }
-                                return function(...args) {
+                                return function (...args) {
                                     fetch(SCRIPT_URL, {
                                         redirect: 'follow',
                                         method: 'POST',
                                         body: JSON.stringify({ func: prop, args: args }),
                                         headers: { 'Content-Type': 'text/plain;charset=utf-8' }
                                     })
-                                    .then(res => res.json())
-                                    .then(data => {
-                                        if (data.status === 'success') {
-                                            if (state.successHandler) state.successHandler(data.data);
-                                        } else {
-                                            if (state.failureHandler) state.failureHandler(data.message);
-                                            else console.error("Backend Error:", data.message);
-                                        }
-                                    }).catch(err => {
-                                        if (state.failureHandler) state.failureHandler(err.toString());
-                                        else console.error("Fetch:", err);
-                                    });
+                                        .then(res => res.json())
+                                        .then(data => {
+                                            if (data.status === 'success') {
+                                                if (state.successHandler) state.successHandler(data.data);
+                                            } else {
+                                                if (state.failureHandler) state.failureHandler(data.message);
+                                                else console.error("Backend Error:", data.message);
+                                            }
+                                        }).catch(err => {
+                                            if (state.failureHandler) state.failureHandler(err.toString());
+                                            else console.error("Fetch:", err);
+                                        });
                                 };
                             }
                         });
@@ -898,19 +942,30 @@
             const u = document.getElementById('username').value;
             const p = document.getElementById('password').value;
 
-            startLoading();
-
-            // Logic berlaku sama untuk Sim & Prod karena ambil dari var `db`
-            setTimeout(() => {
-                const user = db.users.find(x => x.Username === u && x.Password === p);
-                if (user) {
-                    currentUser = user;
-                    initApp();
-                } else {
-                    Swal.fire('Gagal', 'Username atau Password salah!', 'error');
-                }
-                endLoading();
-            }, 500);
+            // Jika db.users masih kosong (baru pertama load & isSim = false), tarik data dari server dulu
+            if (!db.users || db.users.length === 0) {
+                loadData(() => {
+                    const user = db.users && db.users.find(x => x.Username === u && x.Password === p);
+                    if (user) {
+                        currentUser = user;
+                        initApp(false); // tidak perlu load data lagi
+                    } else {
+                        Swal.fire('Gagal', 'Username atau Password salah!', 'error');
+                    }
+                });
+            } else {
+                startLoading();
+                setTimeout(() => {
+                    const user = db.users.find(x => x.Username === u && x.Password === p);
+                    if (user) {
+                        currentUser = user;
+                        initApp(false);
+                    } else {
+                        Swal.fire('Gagal', 'Username atau Password salah!', 'error');
+                    }
+                    endLoading();
+                }, 500);
+            }
         }
 
         function handleLogout() {
@@ -925,22 +980,22 @@
          */
         function applyRBAC() {
             const role = currentUser.Role;
-            
+
             // Definisikan elemen navigasi
             const navDashboard = document.getElementById('nav-dashboard');
             const navPesanan = document.getElementById('nav-pesanan');
             const navTransaksi = document.getElementById('nav-transaksi');
             const navLaporan = document.getElementById('nav-laporan');
             const navAkun = document.getElementById('nav-akun');
-            
+
             // Sembunyikan semua fitur terbatas sebagai default
             [navTransaksi, navLaporan, navAkun].forEach(el => el && el.classList.add('hidden'));
-            navPesanan && navPesanan.classList.remove('hidden'); 
-            
+            navPesanan && navPesanan.classList.remove('hidden');
+
             const tabLapTrx = document.getElementById('tab-laporan-transaksi');
             const tabLapKeu = document.getElementById('tab-laporan-keuangan');
-            if(tabLapTrx) tabLapTrx.classList.remove('hidden');
-            if(tabLapKeu) tabLapKeu.classList.remove('hidden');
+            if (tabLapTrx) tabLapTrx.classList.remove('hidden');
+            if (tabLapKeu) tabLapKeu.classList.remove('hidden');
 
             if (role === 'Admin (Owner)') {
                 [navTransaksi, navLaporan, navAkun].forEach(el => el && el.classList.remove('hidden'));
@@ -948,14 +1003,14 @@
                 navTransaksi && navTransaksi.classList.remove('hidden');
             } else if (role === 'Petugas Gudang') {
                 navLaporan && navLaporan.classList.remove('hidden');
-                navPesanan && navPesanan.classList.add('hidden'); 
-                if(tabLapTrx) tabLapTrx.classList.add('hidden');
-                if(tabLapKeu) tabLapKeu.classList.add('hidden');
+                navPesanan && navPesanan.classList.add('hidden');
+                if (tabLapTrx) tabLapTrx.classList.add('hidden');
+                if (tabLapKeu) tabLapKeu.classList.add('hidden');
             }
             // Karyawan hanya Dashboard & Pesanan
         }
 
-        function initApp() {
+        function initApp(shouldLoadData = true) {
             document.getElementById('login-container').classList.add('hidden');
             document.getElementById('app-container').classList.remove('hidden');
 
@@ -966,17 +1021,23 @@
 
             applyRBAC();
 
-            loadData(() => {
-                // Redirect awal jika Gudang (karena gudang tidak punya akses pesanan)
+            if (shouldLoadData) {
+                loadData(() => {
+                    // Redirect awal jika Gudang (karena gudang tidak punya akses pesanan)
+                    let initialTab = 'dashboard';
+                    switchTab(initialTab);
+                    populateSelectData();
+                });
+            } else {
                 let initialTab = 'dashboard';
                 switchTab(initialTab);
                 populateSelectData();
-            });
+            }
         }
 
         function switchTab(tabId) {
             const role = currentUser.Role;
-            
+
             // Proteksi lapis dua
             if (tabId === 'transaksi' && !['Admin (Owner)', 'Kasir'].includes(role)) return Swal.fire('Ditolak', 'Anda tidak memiliki akses ke halaman ini', 'error');
             if (tabId === 'laporan' && !['Admin (Owner)', 'Petugas Gudang'].includes(role)) return Swal.fire('Ditolak', 'Anda tidak memiliki akses ke halaman ini', 'error');
@@ -1005,7 +1066,7 @@
             if (tabId === 'laporan') renderTableLaporan();
             if (tabId === 'transaksi') {
                 document.getElementById('generate-id-view').innerText = generateID('TRX');
-                
+
                 // Spotting price admin override
                 const spottingPriceInput = document.getElementById('trx-spotting-price');
                 if (spottingPriceInput && currentUser) {
@@ -1068,7 +1129,7 @@
                 </li>
                 `;
             }).join('');
-            if(trxHtml === '') trxHtml = '<li class="py-2 text-sm text-gray-500 text-center">Belum ada transaksi</li>';
+            if (trxHtml === '') trxHtml = '<li class="py-2 text-sm text-gray-500 text-center">Belum ada transaksi</li>';
             document.getElementById('list-transaksi-terbaru').innerHTML = trxHtml;
 
             // Kepegawaian List
@@ -1082,7 +1143,7 @@
                 </li>
                 `;
             }).join('');
-            if(userHtml === '') userHtml = '<li class="py-2 text-sm text-gray-500 text-center">Belum ada pegawai</li>';
+            if (userHtml === '') userHtml = '<li class="py-2 text-sm text-gray-500 text-center">Belum ada pegawai</li>';
             document.getElementById('list-kepegawaian').innerHTML = userHtml;
         }
 
@@ -1104,10 +1165,10 @@
                 let d = new Date(today);
                 d.setDate(d.getDate() - i);
                 let dateStr = d.toISOString().split('T')[0];
-                
-                let labelStr = (i === 0 && daysToShow > 1) ? 'Hari Ini' : `${d.getDate()}/${d.getMonth()+1}`;
+
+                let labelStr = (i === 0 && daysToShow > 1) ? 'Hari Ini' : `${d.getDate()}/${d.getMonth() + 1}`;
                 if (daysToShow === 1) labelStr = 'Hari Ini';
-                
+
                 labels.push(labelStr);
 
                 let totalRev = 0;
@@ -1163,14 +1224,14 @@
                         }
                     ]
                 },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
-                    plugins: { 
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
                         legend: { display: true, position: 'top' },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
+                                label: function (context) {
                                     let label = context.dataset.label || '';
                                     if (label) label += ': ';
                                     if (context.parsed.y !== null) {
@@ -1227,11 +1288,11 @@
                     let btnMove = nextStage
                         ? `<button onclick="moveStatus('${t.ID}', '${nextStage}')" class="mt-3 w-full bg-navy hover:bg-blue-800 text-white text-xs font-bold py-2 rounded-lg transition duration-200 shadow flex justify-center items-center group-hover:shadow-md"><span class="mr-1">Maju ke ${nextStage}</span> <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i></button>`
                         : '';
-                    
+
                     let btnPrint = `<button onclick="printNota('${t.ID}')" class="mt-2 w-full bg-gray-50 hover:bg-gray-100 text-gray-600 hover:text-navy text-xs font-bold py-2 rounded-lg transition duration-200 border border-gray-200 flex justify-center items-center"><i class="fas fa-print mr-2"></i> Cetak Nota</button>`;
 
-                    let payBadge = t.PaymentStatus === 'Lunas' 
-                        ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold border border-green-200"><i class="fas fa-check mr-1"></i>Lunas</span>' 
+                    let payBadge = t.PaymentStatus === 'Lunas'
+                        ? '<span class="text-[10px] px-2 py-0.5 rounded-full bg-green-100 text-green-700 font-semibold border border-green-200"><i class="fas fa-check mr-1"></i>Lunas</span>'
                         : '<span class="text-[10px] px-2 py-0.5 rounded-full bg-red-100 text-red-700 font-semibold border border-red-200"><i class="fas fa-clock mr-1"></i>Belum</span>';
 
                     return `
@@ -1278,15 +1339,15 @@
             const labels = [];
             const dataCounts = [];
             const today = new Date();
-            
+
             for (let i = 6; i >= 0; i--) {
                 let d = new Date(today);
                 d.setDate(today.getDate() - i);
                 let dateStr = d.toISOString().split('T')[0];
-                
+
                 // Format label: DD/MM
                 labels.push(`${d.getDate()}/${d.getMonth() + 1}`);
-                
+
                 // Hitung jumlah transaksi pada tanggal ini
                 let count = db.transactions.filter(t => t.Date === dateStr).length;
                 dataCounts.push(count);
@@ -1308,9 +1369,9 @@
                         pointRadius: 4
                     }]
                 },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: false, 
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
                     plugins: { legend: { display: false } },
                     scales: {
                         y: {
@@ -1328,7 +1389,7 @@
                 let t = db.transactions.find(x => x.ID === trxId);
                 if (t) {
                     t.Status = newStatus;
-                    
+
                     // Auto Deduct Inventory (Khusus INV-1) di mode simulasi
                     if (newStatus === 'Proses') {
                         let qty = Number(t.Qty) || 0;
@@ -1375,7 +1436,7 @@
             // Populate Services dynamically
             const selectSvc = document.getElementById('trx-service');
             selectSvc.innerHTML = '<option value="">-- Pilih Layanan --</option>';
-            if(db.services) {
+            if (db.services) {
                 db.services.forEach(s => {
                     let opt = document.createElement('option');
                     opt.value = s.ID;
@@ -1391,19 +1452,19 @@
             const svc = document.getElementById('trx-service');
             const qty = document.getElementById('trx-qty').value;
             const isSpotting = document.getElementById('trx-spotting') ? document.getElementById('trx-spotting').checked : false;
-            
+
             let price = 0;
             if (svc.selectedIndex > 0) {
                 price = Number(svc.options[svc.selectedIndex].dataset.price) || 0;
             }
-            
+
             let total = price * (qty || 0);
             if (isSpotting) {
                 const spottingStr = document.getElementById('trx-spotting-price').value.replace(/\./g, '');
                 const spottingPrice = Number(spottingStr) || 0;
                 total += spottingPrice;
             }
-            
+
             document.getElementById('trx-total-display').innerText = `Rp ${total.toLocaleString('id-ID')}`;
             return total;
         }
@@ -1450,7 +1511,7 @@
                 if (!db.inventory) db.inventory = [];
                 if (id) {
                     let inv = db.inventory.find(i => i.ID === id);
-                    if(inv) {
+                    if (inv) {
                         inv.ItemName = name;
                         inv.Stock = stock;
                         inv.BuyPrice = price;
@@ -1483,7 +1544,7 @@
         }
         function editInventory(id) {
             let inv = db.inventory.find(i => i.ID === id);
-            if(inv) {
+            if (inv) {
                 document.getElementById('inv-id').value = inv.ID;
                 document.getElementById('inv-name').value = inv.ItemName;
                 document.getElementById('inv-stock').value = inv.Stock;
@@ -1559,7 +1620,7 @@
                     `;
                 });
             }
-            if(html === '') html = '<tr><td colspan="3" class="text-center py-4 text-gray-500">Belum ada layanan</td></tr>';
+            if (html === '') html = '<tr><td colspan="3" class="text-center py-4 text-gray-500">Belum ada layanan</td></tr>';
             tbody.innerHTML = html;
         }
         function handleSaveService(e) {
@@ -1574,7 +1635,7 @@
                 if (!db.services) db.services = [];
                 if (id) { // Edit
                     let svc = db.services.find(s => s.ID === id);
-                    if(svc) {
+                    if (svc) {
                         svc.ServiceName = name;
                         svc.Price = price;
                         svc.Unit = unit;
@@ -1587,7 +1648,7 @@
                         Unit: unit
                     });
                 }
-                
+
                 toast(id ? 'Layanan diperbarui!' : 'Layanan ditambahkan!');
                 resetServiceForm();
                 renderTableServices();
@@ -1608,7 +1669,7 @@
         }
         function editService(id) {
             let svc = db.services.find(s => s.ID === id);
-            if(svc) {
+            if (svc) {
                 document.getElementById('svc-id').value = svc.ID;
                 document.getElementById('svc-name').value = svc.ServiceName;
                 document.getElementById('svc-price').value = svc.Price;
@@ -1694,13 +1755,13 @@
                         <td class="px-4 py-2 text-center"><span class="px-2 py-1 text-[10px] rounded font-bold ${statusColor}">${statusText}</span></td>
                         <td class="px-4 py-2 text-center">
                             <button onclick="editUser('${u.ID}')" class="text-blue-500 hover:text-blue-700 mr-2" title="Edit"><i class="fas fa-edit"></i></button>
-                            <button onclick="deleteUser('${u.ID}')" class="text-red-500 hover:text-red-700" title="Hapus" ${u.Username==='admin'?'disabled style="opacity:0.3;"':''}><i class="fas fa-trash"></i></button>
+                            <button onclick="deleteUser('${u.ID}')" class="text-red-500 hover:text-red-700" title="Hapus" ${u.Username === 'admin' ? 'disabled style="opacity:0.3;"' : ''}><i class="fas fa-trash"></i></button>
                         </td>
                     </tr>
                     `;
                 });
             }
-            if(html === '') html = '<tr><td colspan="5" class="text-center py-4 text-gray-500">Belum ada pegawai</td></tr>';
+            if (html === '') html = '<tr><td colspan="5" class="text-center py-4 text-gray-500">Belum ada pegawai</td></tr>';
             tbody.innerHTML = html;
         }
         function handleSaveUser(e) {
@@ -1715,7 +1776,7 @@
             startLoading();
             if (isSim) {
                 if (!db.users) db.users = [];
-                
+
                 const exist = db.users.find(u => u.Username === username && u.ID !== id);
                 if (exist) {
                     endLoading();
@@ -1724,7 +1785,7 @@
 
                 if (id) {
                     let usr = db.users.find(u => u.ID === id);
-                    if(usr) {
+                    if (usr) {
                         usr.Name = name;
                         usr.Username = username;
                         usr.Password = password;
@@ -1741,7 +1802,7 @@
                         Status: status
                     });
                 }
-                
+
                 toast(id ? 'Data pegawai diperbarui!' : 'Pegawai ditambahkan!');
                 resetUserForm();
                 renderTableUsers();
@@ -1764,7 +1825,7 @@
         }
         function editUser(id) {
             let usr = db.users.find(u => u.ID === id);
-            if(usr) {
+            if (usr) {
                 document.getElementById('usr-id').value = usr.ID;
                 document.getElementById('usr-name').value = usr.Name;
                 document.getElementById('usr-username').value = usr.Username;
@@ -1819,7 +1880,7 @@
             const total = calculateTotal();
             let serviceName = svcSelect.options[svcSelect.selectedIndex].dataset.name;
             const isSpotting = document.getElementById('trx-spotting') ? document.getElementById('trx-spotting').checked : false;
-            
+
             if (isSpotting) {
                 const spottingStr = document.getElementById('trx-spotting-price').value.replace(/\./g, '');
                 const spottingPrice = Number(spottingStr) || 0;
@@ -1858,12 +1919,12 @@
             document.getElementById('form-transaksi').reset();
             document.getElementById('trx-total-display').innerText = 'Rp 0';
             document.getElementById('generate-id-view').innerText = generateID('TRX');
-            
+
             if (shouldPrintAfterSave && savedId) {
                 printNota(savedId);
                 shouldPrintAfterSave = false;
             }
-            
+
             switchTab('pesanan'); // lempar ke board pesanan
         }
 
@@ -1918,7 +1979,7 @@
             }
 
             activeLaporanTab = tabName;
-            
+
             ['transaksi', 'keuangan', 'inventory'].forEach(t => {
                 const btn = document.getElementById(`tab-laporan-${t}`);
                 const content = document.getElementById(`content-laporan-${t}`);
@@ -1967,13 +2028,13 @@
 
             let trxList = [...db.transactions].sort((a, b) => new Date(b.Date) - new Date(a.Date));
             const today = new Date();
-            today.setHours(0,0,0,0);
+            today.setHours(0, 0, 0, 0);
 
             let html = '';
 
             trxList.forEach(t => {
                 let tDate = new Date(t.Date);
-                tDate.setHours(0,0,0,0);
+                tDate.setHours(0, 0, 0, 0);
 
                 if (timeFilter === 'hari') {
                     if (tDate.getTime() !== today.getTime()) return;
@@ -2085,14 +2146,14 @@
         function renderKeuanganChart() {
             const ctx = document.getElementById('keuanganChart');
             if (!ctx) return;
-            
+
             // Group data by date
             let groupedData = {};
             let list = db.keuangan || [];
-            
+
             // Generate last 7 days labels
             let labels = [];
-            for(let i=6; i>=0; i--) {
+            for (let i = 6; i >= 0; i--) {
                 let d = new Date();
                 d.setDate(d.getDate() - i);
                 let dateStr = d.toISOString().split('T')[0];
@@ -2143,8 +2204,8 @@
                         }
                     ]
                 },
-                options: { 
-                    responsive: true, 
+                options: {
+                    responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
                         legend: { position: 'top' }

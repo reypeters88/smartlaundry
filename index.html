@@ -2358,7 +2358,7 @@
                 <base href="${baseUrl}">
                 <style>
                     /* Pengaturan Khusus Printer Thermal 58mm (Blueprint BP-LITE58) */
-                    @page { margin: 0; size: 58mm auto; }
+                    @page { margin: 0; }
                     body { 
                         font-family: 'Courier New', Courier, monospace; 
                         width: 58mm; /* Lebar standar kertas thermal 58mm */
@@ -2419,11 +2419,15 @@
                     <p>Simpan nota ini sebagai bukti pengambilan.</p>
                 </div>
                 <script>
-                    // Beri waktu 500ms agar logo manjur.png termuat sempurna, lalu langsung panggil window.print()
+                    // Panggil window.print() setelah jeda 500ms
                     setTimeout(function() {
                         window.print(); 
-                        window.close(); 
                     }, 500);
+
+                    // Tutup jendela otomatis HANYA setelah proses print selesai atau dibatalkan
+                    window.onafterprint = function() {
+                        window.close();
+                    };
                 <\/script>
             </body>
             </html>

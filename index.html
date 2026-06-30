@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Laundry System</title>
 
+    <!-- Favicon (Desktop, Android, iOS) -->
+    <link rel="icon" type="image/png" href="manjur.png">
+    <link rel="apple-touch-icon" href="manjur.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#1e3a8a">
     <!-- CSS / UI Frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -177,9 +182,20 @@
             <!-- HEADER MOBILE -->
             <div class="md:hidden flex justify-between items-center bg-white p-3 rounded-lg shadow mb-4">
                 <div class="font-bold text-navy">Smart Laundry</div>
-                <button onclick="handleLogout()" class="text-red-500 text-sm"><i
-                        class="fas fa-sign-out-alt"></i></button>
+                <div class="flex gap-4 items-center">
+                    <button onclick="refreshData()" class="text-blue-500 text-sm" title="Refresh Data"><i
+                            class="fas fa-sync-alt"></i></button>
+                    <button onclick="handleLogout()" class="text-red-500 text-sm" title="Keluar"><i
+                            class="fas fa-sign-out-alt"></i></button>
+                </div>
             </div>
+
+            <!-- REFRESH BUTTON DESKTOP -->
+            <button onclick="refreshData()"
+                class="hidden md:flex absolute top-6 right-6 bg-white border border-gray-200 text-navy hover:text-blue-600 shadow-sm p-3 rounded-full z-10 transition items-center justify-center group"
+                title="Refresh Data dari Server">
+                <i class="fas fa-sync-alt group-hover:animate-spin"></i>
+            </button>
 
             <!-- ================= VIEW: DASHBOARD ================= -->
             <div id="view-dashboard" class="view-section">
@@ -804,7 +820,7 @@
         let shouldPrintAfterSave = false;
 
         // Konfigurasi URL Google Apps Script Web App
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvNqoKSEsCBsKe4064i2TnlM6q-9Mhecrxs4mi7Gwe1dggAX5ConJEgKISyIGAhNPr/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwX4W0Lvw_eFz1QJeHlWkSHsbWiRKYBQnTWvssa7SXbnf2Ipsj2_zJm20CIxTqauTpifw/exec';
 
         // Polyfill untuk google.script.run menggunakan Fetch API
         if (typeof google === 'undefined') {
@@ -932,6 +948,22 @@
                     })
                     .getAllData();
             }
+        }
+
+        function refreshData() {
+            let activeTab = 'dashboard';
+            document.querySelectorAll('.nav-item').forEach(el => {
+                if (el.classList.contains('active')) {
+                    const match = el.getAttribute('onclick').match(/'([^']+)'/);
+                    if (match) activeTab = match[1];
+                }
+            });
+
+            loadData(() => {
+                switchTab(activeTab);
+                populateSelectData();
+                toast('Data berhasil diperbarui', 'success');
+            });
         }
 
         /**

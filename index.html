@@ -62,7 +62,7 @@
             border-radius: 1rem;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
             .nav-item.active {
                 background-color: #1e40af;
                 border-left: 4px solid #60a5fa;
@@ -136,64 +136,65 @@
     </div>
 
     <!-- APP CONTAINER (Main App) -->
-    <div id="app-container" class="hidden h-screen flex flex-col md:flex-row">
+    <div id="app-container" class="hidden h-screen flex flex-col lg:flex-row">
 
-        <!-- Sidebar Navigation (Desktop) / Bottom Nav (Mobile) -->
+        <!-- Sidebar Navigation (Desktop) / Bottom Nav (Mobile & Tablet) -->
         <nav
-            class="fixed bottom-4 left-4 right-4 z-50 md:relative md:bottom-auto md:left-auto md:right-auto md:z-auto bg-navy/70 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl md:rounded-none md:bg-navy md:backdrop-blur-none md:border-none text-white w-auto md:w-64 flex-shrink-0 flex md:flex-col justify-around md:justify-start overflow-hidden md:overflow-y-auto transition-all">
-            <div class="p-4 hidden md:flex items-center space-x-3 border-b border-blue-800">
-                <img src="manjur.png" alt="Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1">
-                <span class="font-bold text-lg">Smart Laundry</span>
+            class="group fixed bottom-4 left-4 right-4 z-50 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:z-auto bg-navy/70 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl lg:rounded-none lg:bg-navy lg:backdrop-blur-none lg:border-none text-white w-auto lg:w-24 hover:lg:w-64 flex-shrink-0 flex lg:flex-col justify-around lg:justify-start overflow-hidden lg:overflow-y-auto transition-all duration-300">
+            <div class="p-4 hidden lg:flex items-center space-x-3 border-b border-blue-800">
+                <img src="manjur.png" alt="Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1 flex-shrink-0">
+                <span class="font-bold text-lg lg:hidden group-hover:lg:block whitespace-nowrap">Smart Laundry</span>
             </div>
 
-            <div class="flex md:flex-col w-full">
+            <div class="flex lg:flex-col w-full">
                 <a href="#" onclick="switchTab('dashboard')"
-                    class="nav-item active flex flex-col md:flex-row items-center p-3 md:p-4 hover:bg-blue-800 transition flex-1 md:flex-none">
-                    <i class="fas fa-chart-pie md:mr-3 mb-1 md:mb-0 text-lg"></i>
-                    <span class="text-xs md:text-sm">Beranda</span>
+                    class="nav-item active flex flex-col lg:flex-row items-center p-3 lg:p-4 hover:bg-blue-800 transition flex-1 lg:flex-none">
+                    <i class="fas fa-chart-pie lg:mr-3 mb-1 lg:mb-0 text-xl lg:text-2xl text-center w-full lg:w-auto group-hover:lg:w-auto"></i>
+                    <span class="text-xs lg:text-sm lg:hidden group-hover:lg:block whitespace-nowrap">Beranda</span>
                 </a>
                 <a href="#" onclick="switchTab('pesanan')"
-                    class="nav-item flex flex-col md:flex-row items-center p-3 md:p-4 hover:bg-blue-800 transition flex-1 md:flex-none">
-                    <i class="fas fa-list-check md:mr-3 mb-1 md:mb-0 text-lg"></i>
-                    <span class="text-xs md:text-sm">Pesanan</span>
+                    class="nav-item flex flex-col lg:flex-row items-center p-3 lg:p-4 hover:bg-blue-800 transition flex-1 lg:flex-none">
+                    <i class="fas fa-list-check lg:mr-3 mb-1 lg:mb-0 text-xl lg:text-2xl text-center w-full lg:w-auto group-hover:lg:w-auto"></i>
+                    <span class="text-xs lg:text-sm lg:hidden group-hover:lg:block whitespace-nowrap">Pesanan</span>
                 </a>
                 <a href="#" onclick="switchTab('transaksi')"
-                    class="nav-item flex flex-col md:flex-row items-center p-3 md:p-4 hover:bg-blue-800 transition flex-1 md:flex-none">
-                    <i class="fas fa-cart-plus md:mr-3 mb-1 md:mb-0 text-lg"></i>
-                    <span class="text-xs md:text-sm">Tambah</span>
+                    class="nav-item flex flex-col lg:flex-row items-center p-3 lg:p-4 hover:bg-blue-800 transition flex-1 lg:flex-none">
+                    <i class="fas fa-cart-plus lg:mr-3 mb-1 lg:mb-0 text-xl lg:text-2xl text-center w-full lg:w-auto group-hover:lg:w-auto"></i>
+                    <span class="text-xs lg:text-sm lg:hidden group-hover:lg:block whitespace-nowrap">Tambah</span>
                 </a>
                 <a href="#" onclick="switchTab('laporan')"
-                    class="nav-item flex flex-col md:flex-row items-center p-3 md:p-4 hover:bg-blue-800 transition flex-1 md:flex-none">
-                    <i class="fas fa-file-invoice md:mr-3 mb-1 md:mb-0 text-lg"></i>
-                    <span class="text-xs md:text-sm">Laporan</span>
+                    class="nav-item flex flex-col lg:flex-row items-center p-3 lg:p-4 hover:bg-blue-800 transition flex-1 lg:flex-none">
+                    <i class="fas fa-file-invoice lg:mr-3 mb-1 lg:mb-0 text-xl lg:text-2xl text-center w-full lg:w-auto group-hover:lg:w-auto"></i>
+                    <span class="text-xs lg:text-sm lg:hidden group-hover:lg:block whitespace-nowrap">Laporan</span>
                 </a>
                 <a href="#" onclick="switchTab('akun')"
-                    class="nav-item flex flex-col md:flex-row items-center p-3 md:p-4 hover:bg-blue-800 transition flex-1 md:flex-none">
-                    <i class="fas fa-user-cog md:mr-3 mb-1 md:mb-0 text-lg"></i>
-                    <span class="text-xs md:text-sm">Akun</span>
+                    class="nav-item flex flex-col lg:flex-row items-center p-3 lg:p-4 hover:bg-blue-800 transition flex-1 lg:flex-none">
+                    <i class="fas fa-user-cog lg:mr-3 mb-1 lg:mb-0 text-xl lg:text-2xl text-center w-full lg:w-auto group-hover:lg:w-auto"></i>
+                    <span class="text-xs lg:text-sm lg:hidden group-hover:lg:block whitespace-nowrap">Akun</span>
                 </a>
             </div>
 
-            <div class="hidden md:block mt-auto p-4 border-t border-blue-800">
-                <div class="flex items-center space-x-2 text-sm mb-4">
-                    <i class="fas fa-user-circle text-2xl"></i>
-                    <div>
+            <div class="hidden lg:flex flex-col mt-auto p-4 border-t border-blue-800">
+                <div class="flex items-center space-x-2 text-sm mb-4 justify-center group-hover:lg:justify-start">
+                    <i class="fas fa-user-circle text-3xl flex-shrink-0"></i>
+                    <div class="lg:hidden group-hover:lg:block whitespace-nowrap">
                         <p class="font-bold" id="user-display-name">Admin</p>
                         <p class="text-xs text-blue-300" id="user-display-role">Administrator</p>
                     </div>
                 </div>
                 <button onclick="handleLogout()"
-                    class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded text-sm transition">
-                    <i class="fas fa-sign-out-alt mr-2"></i>Keluar
+                    class="w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded text-sm transition flex justify-center items-center">
+                    <i class="fas fa-sign-out-alt text-xl"></i>
+                    <span class="ml-2 lg:hidden group-hover:lg:block whitespace-nowrap">Keluar</span>
                 </button>
             </div>
         </nav>
 
         <!-- Main Content Area -->
-        <main class="flex-1 bg-gray-100 overflow-y-auto p-4 md:p-6 pb-24 md:pb-6 relative">
+        <main class="flex-1 bg-gray-100 overflow-y-auto p-4 lg:p-6 pb-24 lg:pb-6 relative">
 
-            <!-- HEADER MOBILE -->
-            <div class="md:hidden flex justify-between items-center bg-white p-3 rounded-lg shadow mb-4">
+            <!-- HEADER MOBILE & TABLET -->
+            <div class="lg:hidden flex justify-between items-center bg-white p-3 rounded-lg shadow mb-4">
                 <div class="font-bold text-navy">Smart Laundry</div>
                 <div class="flex gap-4 items-center">
                     <button onclick="refreshData()" class="text-blue-500 text-sm" title="Refresh Data"><i
@@ -205,7 +206,7 @@
 
             <!-- REFRESH BUTTON DESKTOP -->
             <button onclick="refreshData()"
-                class="hidden md:flex absolute top-6 right-6 bg-white border border-gray-200 text-navy hover:text-blue-600 shadow-sm p-3 rounded-full z-10 transition items-center justify-center group"
+                class="hidden lg:flex absolute top-6 right-6 bg-white border border-gray-200 text-navy hover:text-blue-600 shadow-sm p-3 rounded-full z-10 transition items-center justify-center group"
                 title="Refresh Data dari Server">
                 <i class="fas fa-sync-alt group-hover:animate-spin"></i>
             </button>
@@ -2339,6 +2340,7 @@
             const custName = cust ? cust.Name : 'Pelanggan Umum';
             const custPhone = cust ? cust.Phone : '-';
 
+            const baseUrl = window.location.href;
             const printWindow = window.open('', '_blank');
             const notaHtml = `
             <!DOCTYPE html>
@@ -2346,23 +2348,32 @@
             <head>
                 <meta charset="UTF-8">
                 <title>Nota Transaksi ${trx.ID}</title>
+                <base href="${baseUrl}">
                 <style>
-                    body { font-family: monospace; width: 300px; margin: 0 auto; color: #333; }
-                    .header { text-align: center; border-bottom: 1px dashed #333; padding-bottom: 10px; margin-bottom: 10px; }
-                    .header h2 { margin: 0; font-size: 18px; }
-                    .header p { margin: 2px 0; font-size: 12px; }
-                    .content { font-size: 12px; }
-                    .row { display: flex; justify-content: space-between; margin-bottom: 4px; }
-                    .divider { border-bottom: 1px dashed #333; margin: 10px 0; }
-                    .total-row { font-weight: bold; font-size: 14px; }
-                    .footer { text-align: center; font-size: 10px; margin-top: 20px; }
-                    @media print {
-                        body { width: 100%; }
+                    /* Pengaturan Khusus Printer Thermal 58mm (Blueprint BP-LITE58) */
+                    @page { margin: 0; size: 58mm auto; }
+                    body { 
+                        font-family: 'Courier New', Courier, monospace; 
+                        width: 58mm; /* Lebar standar kertas thermal 58mm */
+                        margin: 0; 
+                        padding: 2mm 4mm; /* Jarak aman agar tulisan tidak terpotong */
+                        color: #000;
+                        box-sizing: border-box;
                     }
+                    .header { text-align: center; border-bottom: 1px dashed #000; padding-bottom: 5px; margin-bottom: 5px; }
+                    .header img { width: 50px; height: auto; margin-bottom: 4px; filter: grayscale(100%); }
+                    .header h2 { margin: 0; font-size: 14px; font-weight: bold; }
+                    .header p { margin: 2px 0; font-size: 10px; }
+                    .content { font-size: 10px; }
+                    .row { display: flex; justify-content: space-between; margin-bottom: 2px; }
+                    .divider { border-bottom: 1px dashed #000; margin: 5px 0; }
+                    .total-row { font-weight: bold; font-size: 12px; }
+                    .footer { text-align: center; font-size: 9px; margin-top: 10px; }
                 </style>
             </head>
             <body>
                 <div class="header">
+                    <img src="manjur.png" alt="Logo">
                     <h2>SMART LAUNDRY</h2>
                     <p>Nota Pembayaran</p>
                 </div>
@@ -2401,7 +2412,13 @@
                     <p>Simpan nota ini sebagai bukti pengambilan.</p>
                 </div>
                 <script>
-                    window.onload = function() { window.print(); window.close(); }
+                    window.onload = function() { 
+                        // Beri waktu 500ms agar logo manjur.png termuat sempurna sebelum jendela print muncul
+                        setTimeout(function() {
+                            window.print(); 
+                            window.close(); 
+                        }, 500);
+                    }
                 <\/script>
             </body>
             </html>

@@ -1008,6 +1008,7 @@
                     const user = db.users && db.users.find(x => x.Username === u && x.Password === p);
                     if (user) {
                         currentUser = user;
+                        localStorage.setItem('smartLaundryUser', JSON.stringify(currentUser));
                         initApp(false); // tidak perlu load data lagi
                     } else {
                         Swal.fire('Gagal', 'Username atau Password salah!', 'error');
@@ -1019,6 +1020,7 @@
                     const user = db.users.find(x => x.Username === u && x.Password === p);
                     if (user) {
                         currentUser = user;
+                        localStorage.setItem('smartLaundryUser', JSON.stringify(currentUser));
                         initApp(false);
                     } else {
                         Swal.fire('Gagal', 'Username atau Password salah!', 'error');
@@ -1029,6 +1031,7 @@
         }
 
         function handleLogout() {
+            localStorage.removeItem('smartLaundryUser');
             currentUser = null;
             document.getElementById('app-container').classList.add('hidden');
             document.getElementById('login-container').classList.remove('hidden');
@@ -2429,7 +2432,18 @@
 
         // On Load
         window.onload = () => {
-            endLoading(); // matikan loading awal HTML
+            const savedUser = localStorage.getItem('smartLaundryUser');
+            if (savedUser) {
+                try {
+                    currentUser = JSON.parse(savedUser);
+                    initApp(true); // Memuat UI, bypass login, dan memicu loadData di background
+                } catch (e) {
+                    localStorage.removeItem('smartLaundryUser');
+                    endLoading();
+                }
+            } else {
+                endLoading(); // matikan loading awal HTML
+            }
         }
     </script>
 

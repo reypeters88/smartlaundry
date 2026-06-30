@@ -759,10 +759,55 @@
         let pesananChartInstance = null;
         let shouldPrintAfterSave = false;
 
-        // Cek apakah berjalan di Google Apps Script (Production) atau Luar (Canvas/Simulasi)
-        const isSim = typeof google === 'undefined';
+        // Konfigurasi URL Google Apps Script Web App
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwvNqoKSEsCBsKe4064i2TnlM6q-9Mhecrxs4mi7Gwe1dggAX5ConJEgKISyIGAhNPr/exec';
 
-        // Dummy Data untuk Mode Simulasi
+        // Polyfill untuk google.script.run menggunakan Fetch API
+        if (typeof google === 'undefined') {
+            window.google = {
+                script: {
+                    get run() {
+                        const state = { successHandler: null, failureHandler: null };
+                        const proxy = new Proxy({}, {
+                            get: function(target, prop) {
+                                if (prop === 'withSuccessHandler') {
+                                    return function(handler) { state.successHandler = handler; return proxy; };
+                                }
+                                if (prop === 'withFailureHandler') {
+                                    return function(handler) { state.failureHandler = handler; return proxy; };
+                                }
+                                return function(...args) {
+                                    fetch(SCRIPT_URL, {
+                                        redirect: 'follow',
+                                        method: 'POST',
+                                        body: JSON.stringify({ func: prop, args: args }),
+                                        headers: { 'Content-Type': 'text/plain;charset=utf-8' }
+                                    })
+                                    .then(res => res.json())
+                                    .then(data => {
+                                        if (data.status === 'success') {
+                                            if (state.successHandler) state.successHandler(data.data);
+                                        } else {
+                                            if (state.failureHandler) state.failureHandler(data.message);
+                                            else console.error("Backend Error:", data.message);
+                                        }
+                                    }).catch(err => {
+                                        if (state.failureHandler) state.failureHandler(err.toString());
+                                        else console.error("Fetch:", err);
+                                    });
+                                };
+                            }
+                        });
+                        return proxy;
+                    }
+                }
+            };
+        }
+
+        // Matikan simulasi karena kita sudah menghubungkan dengan backend
+        const isSim = false;
+
+        // Dummy Data (tidak akan dipakai jika isSim false)
         if (isSim) {
             console.warn("BERJALAN DI MODE SIMULASI (DUMMY DATA)");
             document.getElementById('login-sim-note').classList.remove('hidden');

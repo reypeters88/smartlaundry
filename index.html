@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smart Laundry System</title>
-
-    <!-- Favicon (Desktop, Android, iOS) -->
+    <!-- Favicon & PWA Manifest -->
     <link rel="icon" type="image/png" href="manjur.png">
     <link rel="apple-touch-icon" href="manjur.png">
+    <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#1e3a8a">
     <!-- CSS / UI Frameworks -->
@@ -97,7 +97,7 @@
         class="h-screen flex justify-center items-center bg-navy w-full absolute top-0 left-0 z-50">
         <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
             <div class="text-center mb-6">
-                <i class="fas fa-hands-bubbles text-5xl text-navy mb-2"></i>
+                <img src="manjur.png" alt="Logo" class="h-32 mx-auto mb-2 object-contain">
                 <h2 class="text-2xl font-bold text-gray-800">Smart Laundry</h2>
                 <p class="text-gray-500 text-sm">Manajemen & Inventaris</p>
             </div>
@@ -129,7 +129,7 @@
         <nav
             class="bg-navy text-white w-full md:w-64 flex-shrink-0 flex md:flex-col justify-between md:justify-start overflow-x-auto md:overflow-y-auto">
             <div class="p-4 hidden md:flex items-center space-x-3 border-b border-blue-800">
-                <i class="fas fa-hands-bubbles text-2xl"></i>
+                <img src="manjur.png" alt="Logo" class="w-16 h-16 object-contain bg-white rounded-md p-1">
                 <span class="font-bold text-lg">Smart Laundry</span>
             </div>
 
@@ -2388,6 +2388,15 @@
             endLoading(); // matikan loading awal HTML
         }
 
+    <!-- Service Worker Registration for PWA -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker terdaftar!', reg))
+                    .catch(err => console.error('Pendaftaran Service Worker gagal', err));
+            });
+        }
     </script>
 </body>
 

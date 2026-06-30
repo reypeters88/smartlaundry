@@ -1,10 +1,11 @@
-const CACHE_NAME = 'smart-laundry-v1';
+const CACHE_NAME = 'smart-laundry-v2';
 const urlsToCache = [
   './index.html',
   './manjur.png'
 ];
 
 self.addEventListener('install', event => {
+  self.skipWaiting(); // Memaksa update service worker seketika
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
@@ -13,20 +14,41 @@ self.addEventListener('install', event => {
   );
 });
 
+self.addEventListener('activate', event => {
+  // Hapus cache versi lama (v1)
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
+          }
+        })
+      );
+    })
+  );
+});
+
 self.addEventListener('fetch', event => {
-  // Hanya intercept request untuk aset statis lokal
+  // Biarkan request API jalan normal
   if (event.request.url.includes('script.google.com')) {
-    // Biarkan request ke API Google Apps Script berjalan normal (selalu ambil yang terbaru)
     return;
   }
   
+  // STRATEGI NETWORK-FIRST (Utamakan Jaringan Baru, Jatuh ke Cache Jika Offline)
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        if (response) {
-          return response; // Return dari cache jika ada
-        }
-        return fetch(event.request);
+        // Jika online, simpan/update HTML terbaru ke dalam cache
+        const clonedResponse = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, clonedResponse);
+        });
+        return response;
+      })
+      .catch(() => {
+        // Jika offline (tidak ada internet), tampilkan dari cache lama
+        return caches.match(event.request);
       })
   );
 });

@@ -2345,6 +2345,10 @@
 
             const baseUrl = window.location.href;
             const printWindow = window.open('', '_blank');
+            if (!printWindow) {
+                Swal.fire('Pop-up Terblokir', 'Browser Anda memblokir jendela cetak. Tolong izinkan pop-up (Always Allow) untuk situs ini di setelan browser Anda.', 'warning');
+                return;
+            }
             const notaHtml = `
             <!DOCTYPE html>
             <html lang="id">
@@ -2415,13 +2419,11 @@
                     <p>Simpan nota ini sebagai bukti pengambilan.</p>
                 </div>
                 <script>
-                    window.onload = function() { 
-                        // Beri waktu 500ms agar logo manjur.png termuat sempurna sebelum jendela print muncul
-                        setTimeout(function() {
-                            window.print(); 
-                            window.close(); 
-                        }, 500);
-                    }
+                    // Beri waktu 500ms agar logo manjur.png termuat sempurna, lalu langsung panggil window.print()
+                    setTimeout(function() {
+                        window.print(); 
+                        window.close(); 
+                    }, 500);
                 <\/script>
             </body>
             </html>
